@@ -6,16 +6,18 @@
     <script src="vue.min.js"></script>
 </head>
 <body>
+<!-- 实现在body区域显示一个页面名称-->
  <div id="app">
-     {{name}}
+     {{name}} <!-- 这里的name是data中的name，相当于MVVM(Model, View, ViewModel) 的 view 视图 -->
 
  </div>
 </body>
 
 <script>
+    // 编写MVVM中的model部分，及VM中的data部分
     var VM = new Vue({
-        el:'#app',
-        data:{
+        el:'#app', // el: element, 用于指定当前Vue实例控制的区域
+        data:{ // data: 用于存储当前Vue实例中需要用到的数据 - model 数据
             name: '---这是第一个vue测试页面---'
         }
     })

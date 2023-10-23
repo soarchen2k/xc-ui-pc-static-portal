@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>vue入门 v-model</title>
@@ -8,23 +8,40 @@
 <body>
  <div id="app">
      <hr>
-     {{name}}
-     <input type="text" v-model="num1"/> +
-     <input type="text"  v-model="num2"> =
-     {{Number.parseInt(num1) + Number.parseInt(num2)}}
-     <button>计算</button>
+     <a v-bind:href="url">
+     <span v-text="name"></span>
+     </a>
+     <label>
+         <input type="text" v-model="num1"/>
+         +
+     </label>
+     <label>
+         <input type="text" v-model="num2">
+         =
+     </label>
+     <span v-text="result"></span>
+<!--     {{Number.parseInt(num1) + Number.parseInt(num2)}}-->
+     <button v-on:click="calc">计算</button>
  </div>
 </body>
 
 <script>
-    var VM = new Vue({
-        el:'#app',
-        data:{
+    let VM = new Vue({
+        el: '#app',
+        data: { // 相当于 java中的成员变量
             name: '测试计算',
-            num1: 1,
-            num2: 2
+            num1: 0,
+            num2: 0,
+            result: 0,
+            url: 'http://www.google.com',
+        },
+
+        methods: { // 相当于 java中的成员方法
+            calc: function () { // 计算方法
+                this.result = Number.parseInt(this.num1) + Number.parseInt(this.num2);
+            }
         }
-    })
+    });
 
 
 </script>
