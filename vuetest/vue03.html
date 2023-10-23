@@ -2,30 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>vue入门 v-text</title>
+    <title>vue入门 Common instructions</title>
 
 </head>
 <body>
+<!--实现在一个body区域显示名称-->
  <div id="app">
-     <hr>
-     <span v-text="name"></span>
-     <input type="text" v-model="num1"/> +
-     <input type="text"  v-model="num2"> =
-     <span v-text="Number.parseInt(num1) + Number.parseInt(num2)"></span>
+<!--     相当于 MVVM 的 view 视图-->
+     <ul>
+         <li v-for = "(item, index) in list" :key = "index" v-if = "index%2 == 0">{{index}}--{{item}}</li>
+         <li v-for="(value, key) in user">{{key}}--{{value}}</li><br>
+         <li v-for="(item, index) in userlist" :key = "item.user.uname">
+             <div v-if="item.user.uname == 'chong'" style="background: #00f50c">
+                 {{index}}--{{item.user.uname}}--{{item.user.age}}
+             </div>
+             <div v-else="">
+                 {{index}}--{{item.user.uname}}--{{item.user.age}}
+             </div>
+         </li>
+     </ul>
 
-     <button>计算</button>
+
  </div>
 </body>
 <script src="vue.min.js"></script>
 <script>
-    var VM = new Vue({
-        el:'#app',
-        data:{
-            name: '测试计算',
-            num1: 1,
-            num2: 2
+    let VM = new Vue({
+        el: '#app',
+        data: {
+            list: [1, 2, 3, 4, 5],
+            user: {uname: 'chong', age: 45},
+            userlist: [{user: {uname: 'chong', age: 45}},
+                {user: {uname: 'chong2', age: 46},}]
         }
-    })
+    });
 
 
 </script>
